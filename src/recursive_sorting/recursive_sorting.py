@@ -7,17 +7,40 @@ TestArr = [5, 1, 7, 0, 3, 8]
 
 
 def merge(arrA, arrB):
+    # elements = len(arrA) + len(arrB)
+    # merged_arr = [0] * elements
+    # # TO-DO
+    # arrA.extend(arrB)
+    #
+    # for i in range(len(merged_arr)):
+    #     merged_arr[i] = arrA[i]
+    #
+    # merged_arr.sort()
+    # print(merged_arr)
     elements = len(arrA) + len(arrB)
-    merged_arr = [0] * elements
-    # TO-DO
-    arrA.extend(arrB)
+    merged_arr = []
 
-    for i in range(len(merged_arr)):
-        merged_arr[i] = arrA[i]
+    x = 0
+    y = 0
+    for i in range(0, elements):
+        if x >= len(arrA):
+            merged_arr.append(arrB[y])
+            y = y + 1
 
-    merged_arr.sort()
-    print(merged_arr)
+        elif y >= len(arrB):
+            merged_arr.append(arrA[x])
+            x = x + 1
+
+        elif arrA[x] <= arrB[y]:
+            merged_arr.append(arrA[x])
+            x = x + 1
+
+        else:
+            merged_arr.append(arrB[y])
+            y = y + 1
+
     return merged_arr
+
 
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
